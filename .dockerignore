@@ -1,0 +1,10 @@
+.git
+node_modules
+.next
+data
+coverage
+.env*
+!.env.example
+*.pem
+*.key
+*.tsbuildinfo
