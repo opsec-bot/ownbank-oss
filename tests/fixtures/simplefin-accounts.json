@@ -1,0 +1,31 @@
+{
+  "errors": [],
+  "connections": [{ "conn_id": "CONN_FAKE", "name": "Fake Test Bank", "org_id": "fake.example", "org_url": "https://fake.example", "sfin_url": "https://fake.example/sfin" }],
+  "accounts": [
+    {
+      "id": "ACT-FAKE-1",
+      "name": "Fake Checking- 1234 (1234)",
+      "conn_id": "CONN_FAKE",
+      "currency": "USD",
+      "balance": "100.50",
+      "available-balance": "90.25",
+      "balance-date": 1763400000,
+      "org": { "domain": "fake.example", "name": "Fake Test Bank", "sfin-url": "https://fake.example/sfin" },
+      "transactions": [
+        { "id": "TX-1", "posted": 1763300000, "amount": "-12.34", "description": "FAKE GROCERY #123 DALLAS TX", "payee": "Fake Grocery", "memo": "", "transacted_at": 1763290000, "mcc": 5411 },
+        { "id": "TX-2", "posted": 0, "amount": "-5.00", "description": "FAKE CAFE 77", "payee": "Fake Cafe", "memo": "", "transacted_at": 1763350000, "pending": true },
+        { "id": "TX-3", "posted": 1763310000, "amount": "2500.00", "description": "FAKE PAYROLL", "payee": "Fake Employer", "memo": "", "transacted_at": 1763310000 }
+      ]
+    },
+    {
+      "id": "ACT-FAKE-2",
+      "name": "Fake Rewards Visa Card (9876)",
+      "conn_id": "CONN_FAKE",
+      "currency": "USD",
+      "balance": "-250.00",
+      "balance-date": 1763400000,
+      "org": { "domain": "fake.example", "name": "Fake Test Bank" },
+      "transactions": []
+    }
+  ]
+}

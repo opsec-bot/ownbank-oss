@@ -1,0 +1,16 @@
+{
+  "jsonrpc": "2.0",
+  "id": "ownbank",
+  "result": {
+    "total": 4,
+    "limit": 1000,
+    "page": 1,
+    "nativeBalance": { "lamports": 2500000000, "price_per_sol": 100, "total_price": 250 },
+    "items": [
+      { "id": "MINT_PRICED", "interface": "FungibleToken", "token_info": { "balance": 5000000, "decimals": 6, "price_info": { "price_per_token": 1, "total_price": 5.5, "currency": "USDC" } } },
+      { "id": "MINT_UNPRICED", "interface": "FungibleToken", "token_info": { "balance": 12345, "decimals": 6 } },
+      { "id": "MINT_ZERO", "interface": "FungibleToken", "token_info": { "balance": 0, "decimals": 6, "price_info": { "total_price": 99 } } },
+      { "id": "NFT_1", "interface": "V1_NFT" }
+    ]
+  }
+}
