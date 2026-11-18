@@ -53,7 +53,7 @@ async function pending(base: { ip: string; userAgent: string; email: string; pas
 describe("totp codes", () => {
   it("matches the RFC 6238 SHA-1 test vectors (6 digits, 30 s)", () => {
     // Appendix B secret "12345678901234567890". 8-digit 94287082 at T=59 -> 6-digit 287082.
-    const secret = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
+    const secret = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ"; // gitleaks:allow (RFC 6238 test vector)
     expect(codeAt(secret, 59_000)).toBe("287082");
     expect(codeAt(secret, 1_111_111_109_000)).toBe("081804");
   });
