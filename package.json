@@ -1,0 +1,59 @@
+{
+  "name": "ownbank",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.integration.config.mts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "create-owner": "tsx scripts/create-owner.ts",
+    "doctor": "tsx scripts/doctor.ts",
+    "dev:connect": "node --conditions=react-server --env-file=.env.local --import tsx scripts/dev-connect-access-url.ts",
+    "dev:sync": "node --conditions=react-server --env-file=.env.local --import tsx scripts/dev-sync.ts",
+    "gen:vapid": "node scripts/gen-vapid.mjs",
+    "gen:icons": "node scripts/gen-icons.mjs",
+    "backfill": "node --conditions=react-server --env-file=.env.local --import tsx scripts/backfill.ts",
+    "seed:demo": "node --conditions=react-server --import tsx scripts/seed-demo.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@node-rs/argon2": "^2.2.2",
+    "better-sqlite3": "^13.2.0",
+    "drizzle-orm": "^0.45.4",
+    "next": "^16.4.6",
+    "otpauth": "^9.6.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1",
+    "web-push": "^4.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^22.20.5",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/web-push": "^3.6.4",
+    "drizzle-kit": "^0.31.11",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  }
+}
