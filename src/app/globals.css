@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Dark baseline: solid colors, one accent, no pure black or white. */
+@theme {
+  --color-bg: #0f0d14;
+  --color-surface: #19161f;
+  --color-border: #2b2636;
+  --color-text: #efebf5;
+  --color-muted: #9c95ab;
+  --color-accent: #a874e6;
+  --color-accent-fg: #160c22;
+  --color-danger: #ff6b7a;
+  --color-warn: #d8a657;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Phone feel (from the mobile-native checklist): no tap flash, no page
+   rubber-band or pull-to-refresh, no 300 ms tap wait, no text selection on
+   long-pressing a control, inputs at 16px so iOS never zooms. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body {
+  overscroll-behavior: none;
+}
+a,
+button,
+summary,
+select,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+input,
+textarea,
+select {
+  font-size: max(16px, 1em);
+}
+/* Instant press feedback on anything tappable. */
+a,
+button,
+summary {
+  transition: transform 100ms ease-out, opacity 100ms ease-out;
+}
+a:active,
+button:active,
+summary:active {
+  transform: scale(0.98);
+}
