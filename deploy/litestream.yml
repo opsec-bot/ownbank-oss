@@ -1,0 +1,11 @@
+# Streams the SQLite database to the Tigris bucket made by `fly storage create`, which also sets these env vars
+# (and AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY, which Litestream reads on its own).
+dbs:
+  - path: /data/ownbank.db
+    replicas:
+      - type: s3
+        bucket: ${BUCKET_NAME}
+        path: ownbank.db
+        endpoint: ${AWS_ENDPOINT_URL_S3}
+        region: auto
+        retention: 168h

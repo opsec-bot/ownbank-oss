@@ -1,0 +1,29 @@
+# ownbank on Fly. SQLite lives on the volume; one volume = one machine, so never scale past 1
+# (the sync timer and sync lock live in this one process).
+# Secrets: APP_URL, TOKEN_ENC_KEY, bank provider secrets, SYNC_SECRET, MCP_TOKEN, VAPID_*, and the bucket vars from `fly storage create`.
+app = "ownbank"
+primary_region = "iad" # pick yours: fly platform regions
+
+[build]
+
+[mounts]
+  source = "ownbank_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "20s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

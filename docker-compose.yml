@@ -1,0 +1,22 @@
+# ownbank: one container. All data lives in ./data (SQLite database and secrets.json).
+# Start: docker compose up -d --build   Setup code: docker compose logs ownbank
+services:
+  ownbank:
+    build: .
+    image: ownbank
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./data:/data
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_URL: ${APP_URL:-http://localhost:3000}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8080/api/health').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
